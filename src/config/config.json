@@ -1,7 +1,7 @@
 {
   "site": {
     "title": "Arsy Opraza Akma",
-    "base_url": "https://bookworm-light-astro.vercel.app",
+    "base_url": "https://arsyopraza.com",
     "base_path": "/",
     "trailing_slash": false,
     "favicon": "/images/favicon.png",
@@ -17,9 +17,9 @@
   },
 
   "metadata": {
-    "meta_author": "Themefisher",
+    "meta_author": "arsy opraza",
     "meta_image": "/images/og-image.png",
-    "meta_description": "Bookworm Light Astro Blog Template"
+    "meta_description": "Arsy Opraza Akma"
   },
 
   "params": {
