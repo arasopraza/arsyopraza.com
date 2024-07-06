@@ -11,7 +11,7 @@ draft: false
 
 Sebagai _knowledge worker_ (pekerja yang menggunakan pengetahuan atau keahlian) belajar di sepanjang hayat perlu dilakukan. Tak hanya belajar, selalu _update_ pada bidang yang sudah dikuasai pun juga wajib dilakukan. Dua hal ini perlu dilakukan, terlebih pada kondisi gempuran kecerdasan buatan (_Artificial Intelligence_) saat ini yang mungkin mengancam pekerjaan kita sebagai knowledge worker.
 
-## Bertumbuh seperti tanaman
+![image](/images/posts/plant.webp)
 
 Selain itu, salah satu karakter dari knowledge worker adalah _perpetual learner_ (pribadi yang terus belajar). Tujuan untuk selalu belajar adalah agar selalu relevan dengan kondisi saat ini dan adaptif terhadap perubahan. Jika tidak relevan dan adaptif, kita akan tertinggal dan jangan kaget pekerjaan kita tergantikan oleh profesi atau orang lain bahkan oleh kecerdasan buatan.
 
@@ -32,8 +32,6 @@ Berfokuslah dan curahkan semua energi dan waktu untuk mencari dan mengenali kele
 ### Mengenali the best way
 
 Dalam melakukan atau mengerjakan sesuatu, kita akan memiliki cara masing-masing. Sama halnya dengan kelebihan, cara melakukan sesuatu setiap orang unik. Oleh karena itu, perlu untuk mengenali _the best way_-nya kita.
-
-#### Kompas sebagai panduan
 
 Dengan mengenali _the best way_ dalam mengerjakan pekerjaan atau hal lainnya, hasilnya akan menjadi lebih baik. Banyak orang yang salah dalam mengerjakannya sehingga membuat mereka terlihat tidak kompeten. Orang akan mencapai tujuan dan mengerjakan sesuatu dengan cara terbaik mereka.
 
