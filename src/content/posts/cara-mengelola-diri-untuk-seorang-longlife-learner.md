@@ -9,8 +9,6 @@ tags: ["Personal Growth", "Personal Development"]
 draft: false
 ---
 
-# Cara mengelola diri untuk seorang longlife learner
-
 Sebagai _knowledge worker_ (pekerja yang menggunakan pengetahuan atau keahlian) belajar di sepanjang hayat perlu dilakukan. Tak hanya belajar, selalu _update_ pada bidang yang sudah dikuasai pun juga wajib dilakukan. Dua hal ini perlu dilakukan, terlebih pada kondisi gempuran kecerdasan buatan (_Artificial Intelligence_) saat ini yang mungkin mengancam pekerjaan kita sebagai knowledge worker.
 
 ## Bertumbuh seperti tanaman
