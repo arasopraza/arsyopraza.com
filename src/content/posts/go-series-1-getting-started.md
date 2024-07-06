@@ -9,9 +9,6 @@ tags: ["Golang"]
 draft: false
 ---
 
-
-# Go Series #1 - Getting Started
-
 Series ini merupakan catatan pribadi yang dapat dibagikan melalui tulisan selama belajar Go. Tulisan ini mungkin tidak seniat artikel blog yang ada di luar sana. Tetapi, harapannya tulisan ini dapat bermanfaat bagi pembaca yang sedang belajar Go.
 
 Di luar sana, sudah banyak yang bahas tentang pengertian, sejarah, kelebihan, dan alasan menggunakan Go. Oleh karena itu, di sini kita tidak akan bahas hal tersebut.
