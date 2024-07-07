@@ -1,7 +1,7 @@
 ---
 title: "Introduction to Docker for Beginners"
 description: "Series ini merupakan catatan pribadi yang dapat dibagikan melalui tulisan selama belajar Go Language. Semoga series Go ini bermanfaat untuk pembaca"
-date: 2024-02-16T00:00:00Z
+date: 2023-02-16T00:00:00Z
 image: "/images/posts/docker-architecture.webp"
 categories: ["Tech"]
 authors: ["Arsy Opraza"]
