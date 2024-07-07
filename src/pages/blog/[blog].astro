@@ -1,34 +1,41 @@
 ---
+import config from "@/config/config.json";
 import Base from "@/layouts/Base.astro";
+import Pagination from "@/layouts/components/Pagination.astro";
 import Posts from "@/layouts/Posts.astro";
 import { getSinglePage } from "@/lib/contentParser.astro";
-import { getTaxonomy } from "@/lib/taxonomyParser.astro";
 import { sortByDate } from "@/lib/utils/sortFunctions";
-import taxonomyFilter from "@/lib/utils/taxonomyFilter";
-import { humanize } from "@/lib/utils/textConverter";
 
 export async function getStaticPaths() {
-  const blogs = await getTaxonomy("posts", "blog");
+  const posts = await getSinglePage("posts");
+  const totalPages = Math.ceil(posts.length / config.settings.pagination);
+  const paths = [];
 
-  return blogs.map((blog) => {
-    return {
-      params: { blog },
-    };
-  });
+  for (let i = 1; i < totalPages; i++) {
+    paths.push({
+      params: {
+        slug: (i + 1).toString(),
+      },
+    });
+  }
+  return paths;
 }
 
-const { blog } = Astro.params;
-
+const { slug } = Astro.params;
 const posts = await getSinglePage("posts");
-const title = humanize(Blog || "");
+const sortedPosts = sortByDate(posts);
+const totalPages = Math.ceil(posts.length / config.settings.pagination);
+const currentPage = slug && !isNaN(Number(slug)) ? Number(slug) : 1;
+const indexOfLastPost = currentPage * config.settings.pagination;
+const indexOfFirstPost = indexOfLastPost - config.settings.pagination;
+const currentPosts = sortedPosts.slice(indexOfFirstPost, indexOfLastPost);
 ---
 
-<Base title={title || "Blog"}>
-  <div class="section">
+<Base title={"Blog"}>
+  <section class="section">
     <div class="container">
-      <p class="text-center text-2xl mb-4">Showing Posts From</p>
-      <h1 class="h2 mb-16 text-center text-primary">{title}</h1>
-      <Posts posts={sortedPosts} fluid={false} />
+      <Posts className="mb-16" posts={currentPosts} />
+      <Pagination totalPages={totalPages} currentPage={currentPage} />
     </div>
-  </div>
+  </section>
 </Base>
