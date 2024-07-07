@@ -1,0 +1,102 @@
+---
+import Base from "@/layouts/Base.astro";
+import { getSinglePage } from "@/lib/contentParser.astro";
+import { Image } from "astro:assets";
+import Share from "@/components/Share.astro";
+import SimilarPosts from "@/components/SimilarPosts.astro";
+import dateFormat from "@/lib/utils/dateFormat";
+import similerItems from "@/lib/utils/similarItems";
+import { humanize, markdownify, slugify } from "@/lib/utils/textConverter";
+import { BiCalendarEdit, BiCategoryAlt, BiUserCircle } from "react-icons/bi";
+
+export async function getStaticPaths() {
+  const posts = await getSinglePage("posts");
+  const paths = posts.map((post) => ({
+    params: { slug: post.slug },
+  }));
+  return paths; // Mengembalikan array langsung
+}
+
+const { slug } = Astro.params;
+const posts = await getSinglePage("posts");
+const post = posts.find((p) => p.slug === slug);
+const similarPosts = similerItems(post, posts, post.slug);
+const { Content } = await post.render();
+const { title, description, authors, categories, image, date, tags } = post.data;
+const allAuthors = ["Arsy Opraza"];
+---
+
+<Base title={title || "Blog"}>
+  <section class="section">
+    <div class="container">
+      <article class="row justify-center">
+        <div class="md:col-10 text-center">
+          <h1 set:html={markdownify(title)} class="h2" />
+          <ul class="mt-4 flex flex-wrap items-center justify-center text-text">
+            <li class="mx-3 flex items-center flex-wrap font-medium">
+              <BiUserCircle className="mr-1 h-5 w-5 text-gray-600" />
+              <>Arsy Opraza</>
+            </li>
+            <li class="mx-3 flex items-center flex-wrap font-medium">
+              <BiCalendarEdit className="mr-1 h-5 w-5 text-gray-600" />
+              <>{dateFormat(date)}</>
+            </li>
+            <li class="mx-3 flex items-center flex-wrap">
+              <BiCategoryAlt className="mr-1 h-[18px] w-[18px] text-gray-600" />
+              <>
+                <ul>
+                  {categories.map((category: string, i: number) => (
+                    <li class="inline-block">
+                      <a
+                        href={`/categories/${slugify(category)}`}
+                        class="mr-2 hover:text-primary font-medium"
+                      >
+                        {humanize(category)}
+                        {i !== post.data.categories.length - 1 && ","}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            </li>
+          </ul>
+        </div>
+
+        <div class="md:col-10">
+          <div class="content mb-16 text-left">
+            <Content />
+          </div>
+          <div class="flex flex-wrap items-center justify-between">
+            <ul class="mr-4 mb-4 space-x-3">
+              {tags.map((tag: string) => (
+                <li class="inline-block">
+                  <a
+                    href={`/tags/${slugify(tag)}`}
+                    class="block rounded-lg bg-theme-light px-4 py-2 font-semibold text-dark text-sm hover:text-primary transition duration-300"
+                  >
+                    #{humanize(tag)}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <Share
+              className="social-share mb-4"
+              title={title}
+              description={description}
+              slug={post.slug}
+            />
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  {similarPosts.length > 0 && (
+    <section class="section pt-0">
+      <div class="container">
+        <h2 class="mb-8 text-center h3">Similar Posts</h2>
+        <SimilarPosts posts={similarPosts.slice(0, 3)} />
+      </div>
+    </section>
+  )}
+</Base>
