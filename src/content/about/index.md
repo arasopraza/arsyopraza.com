@@ -29,6 +29,13 @@ experiences:
     title: "Software Engineer Intern"
     company: "Kompas Gramedia"
     duration: "Aug 2021 - Feb 2022"
+
+talks:
+  title: "Talks"
+  items:
+  - title: "Sharing Technology Polines 2024"
+    description: "Sharing Technology is an event held once a year by the Electrical Engineering Student Association of Semarang State Polytechnic."
+    images: "/images/sharetech.webp"
 ---
 
 I'm a passionate software engineer who builds bridges between complex problems and elegant solutions. By day, I'm wrangling code and writing course material that helps students learn coding, especially Back-End. By night, you'll find me on Twitter/X or exploring the latest tech trends.

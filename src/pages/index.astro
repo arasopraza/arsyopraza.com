@@ -10,7 +10,7 @@ const entry = await getEntryBySlug("about", "index");
 const { Content } = await entry.render();
 const { contact_form_action } = config.params;
 const { address, email, phone } = config.contactinfo;
-const { title, description, meta_title, image, what_i_do, experiences } = entry.data;
+const { title, description, meta_title, image, what_i_do, talks, experiences } = entry.data;
 ---
 
 <Base
@@ -94,6 +94,32 @@ const { title, description, meta_title, image, what_i_do, experiences } = entry.
           ))
         }
       </div>
+    </div>
+  </section>
+
+  <section class="section pt-0">
+    <div class="container">
+        <h3 class="page-heading mb-20">{talks.title}</h3>
+        <div class="row justify-center gy-4 text-center">
+            {talks.items.map((item) => (
+                <div class="col-12 col-md-6 mb-4">
+                    {item.images && (
+                        <div class="img-cover mb-4">
+                            <Image
+                                src={item.images}
+                                width={295}
+                                height={395}
+                                alt={item.title}
+                            />
+                        </div>
+                    )}
+                    <div class="text-center mx-auto" style="max-width: 500px;">
+                        <h4 class="text-dark font-weight-700 mb-3">{item.title}</h4>
+                        <p>{item.description}</p>
+                    </div>
+                </div>
+            ))}
+        </div>
     </div>
   </section>
 </Base>
