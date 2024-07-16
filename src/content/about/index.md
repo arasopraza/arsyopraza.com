@@ -30,6 +30,22 @@ experiences:
     company: "Kompas Gramedia"
     duration: "Aug 2021 - Feb 2022"
 
+projects:
+  title: "Projects"
+  items:
+  - title: "Hello Suster"
+    description: "This is the REST API build with Go, Docker and PostgreSQL."
+    link: "https://github.com/arasopraza/hello-suster"
+  - title: "Enqilo Store"
+    description: "This is the REST API build with Go, Docker and PostgreSQL."
+    link: "https://github.com/arasopraza/enqilo-store"
+  - title: "NestJS Clean Architecture Starter Template"
+    description: "Nest JS Clean Architecture with TypeORM and PostgreSQL."
+    link: "https://github.com/arasopraza/NestJS-Starter-Template"
+  - title: "Scraping Data Tokopedia"
+    description: "This project is a web scraper that fetches product data based on a keyword and exports the data to a CSV file."
+    link: "https://github.com/arasopraza/scraping-data-tokopedia"
+
 talks:
   title: "Talks"
   items:
