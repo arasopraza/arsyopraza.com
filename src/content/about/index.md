@@ -52,6 +52,9 @@ talks:
   - title: "Sharing Technology Polines 2024"
     description: "Sharing Technology is an event held once a year by the Electrical Engineering Student Association of Semarang State Polytechnic."
     images: "/images/sharetech.webp"
+  - title: "Python Conference Asia-Pacific (PyCon APAC) 2024"
+    description: "Python Conference Asia Pacific or PyCon APAC is an annual conference where Python enthusiasts share their knowledge with the others, especially in Asia Pacific region."
+    images: "/images/pycon-apac.webp"
 ---
 
 I'm a passionate software engineer who builds bridges between complex problems and elegant solutions. By day, I'm wrangling code and writing course material that helps students learn coding, especially Back-End. By night, you'll find me on Twitter/X or exploring the latest tech trends.
