@@ -55,6 +55,9 @@ talks:
   - title: "Python Conference Asia-Pacific (PyCon APAC) 2024"
     description: "Python Conference Asia Pacific or PyCon APAC is an annual conference where Python enthusiasts share their knowledge with the others, especially in Asia Pacific region."
     images: "/images/pycon-apac.webp"
+  - title: "AWS Community Day Indonesia 2024"
+    description: "AWS Community Day Indonesia 2024 is a event held by AWS User Group Indonesia to delve into the latest trends, innovations, and best practices in cloud computing with Amazon Web Services (AWS)."
+    images: "/images/aws-comm-id.webp"
 ---
 
 I'm a passionate software engineer who builds bridges between complex problems and elegant solutions. By day, I'm wrangling code and writing course material that helps students learn coding, especially Back-End. By night, you'll find me on Twitter/X or exploring the latest tech trends.
