@@ -71,6 +71,9 @@ talks:
   - title: "AWS Community Day Indonesia 2024"
     description: "AWS Community Day Indonesia 2024 is a event held by AWS User Group Indonesia to delve into the latest trends, innovations, and best practices in cloud computing with Amazon Web Services (AWS)."
     images: "/images/aws-comm-id.webp"
+  - title: "Google Developer Group DevFest Semarang 2024"
+    description: "DevFest is the largest Google Developer Group (GDG) event series, where the community learns about the latest technologies and products from Google."
+    images: "/images/devfest2024.webp"
 ---
 
 I'm a passionate software engineer who builds bridges between complex problems and elegant solutions. By day, I'm wrangling code and writing course material that helps students learn coding, especially Back-End. By night, you'll find me on Twitter/X or exploring the latest tech trends.
