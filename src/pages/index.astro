@@ -10,7 +10,7 @@ const entry = await getEntryBySlug("about", "index");
 const { Content } = await entry.render();
 const { contact_form_action } = config.params;
 const { address, email, phone } = config.contactinfo;
-const { title, description, meta_title, image, what_i_do, talks, projects, experiences } = entry.data;
+const { title, description, meta_title, image, what_i_do, talks, projects, experiences, certifications } = entry.data;
 ---
 
 <Base
@@ -78,6 +78,23 @@ const { title, description, meta_title, image, what_i_do, talks, projects, exper
         }
       </div>
     </div>
+
+    <div class="container">
+    <h3 class="page-heading mb-20">{certifications.title}</h3>
+    <div class="certification-list flex items-center space-x-4">
+      {
+        certifications.items.map((certification) => (
+          <div class="experience-item flex-shrink-0">
+            <div class="experience-icon">
+              <div class="icon-wrapper w-100 h-100 flex items-center justify-center">
+                <img src={certification.icon} alt="Experience Icon" class="w-40 h-40" />
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
   </section>
 
 <section class="section pt-0">
