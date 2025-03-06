@@ -34,14 +34,13 @@ certifications:
   title: "Certifications"
   items:
   - title: "AWS Certified Cloud Practitioner"
-    link: "https://www.dicoding.com/certificates/0LZDZJQKQZ6M"
     icon: "/images/aws-certified-cloud-practitioner.png"
   - title: "Associate Cloud Engineer"
-    link: "https://www.dicoding.com/certificates/0LZDZJQKQZ6M"
     icon: "/images/associate-cloud-engineer-certification.png"
   - title: "AWS AI Practitioner"
-    link: "https://www.dicoding.com/certificates/0LZDZJQKQZ6M"
     icon: "/images/aws-certified-ai-practitioner-early-adopter.png"
+  - title: "Azure Data Scientist Associate"
+    icon: "/images/Azure-DP100.png"
 
 projects:
   title: "Projects"
