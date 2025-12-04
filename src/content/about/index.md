@@ -4,19 +4,13 @@ meta_title: "About"
 image: "/images/profile.webp"
 draft: false
 
-what_i_do:
-  title: "What I Do"
-  items:
-  - title: "Coding"
-    description: "Developing efficient and scalable software solutions, with a focus on back-end development, ensuring robust and maintainable code."
-  - title: "Content Writing"
-    description: "I'm a writer for an online coding course at the largest edutech company in Indonesia with 100K student enrolled. I also write articles for various media such as my personal blog, twitter and medium.I crafting narratives and informative pieces that engage readers and convey complex ideas with clarity and creativity."
-  - title: "Speaker/Teaching"
-    description: "Delivering engaging and informative sessions on coding and technology, helping students and professionals understand complex concepts through clear explanations and hands-on examples. I specialize in teaching back-end development and have conducted numerous live training sessions."
-
 experiences:
   title: "Experiences"
   items:
+  - icon: "/images/dicoding_logo.jpeg"
+    title: "Associate Lead Curriculum Developer"
+    company: "Dicoding"
+    duration: "Nov 2025 - Present"
   - icon: "/images/dicoding_logo.jpeg"
     title: "Curriculum Developer"
     company: "Dicoding"
@@ -79,14 +73,14 @@ I am a Software Engineer specializing in Backend and Cloud technologies. With a 
 
 #### What I do
 
-* **Engineering**
-    I build high-performance backend architectures and cloud infrastructure. I thrive on solving difficult technical problems and optimizing systems for scale.
+* **Engineering**:
+    I develop efficient, scalable software and AI solutions with a specific focus on Back-End architecture and Cloud infrastructure. My goal is to write robust, maintainable code that solves complex problems while ensuring high availability and performance.
 
-* **Speaking**
+* **Speaking**:
     From intimate local meetups to major tech conferences, I share insights on cloud architecture, backend development, and software best practices. I believe in open knowledge sharing to help the community stay ahead of the curve.
 
-* **Education**
-    I author technical course material that trains the next generation of developers, breaking down complex backend concepts into actionable, industry-ready learning paths.
+* **Education**:
+    I serve as a curriculum writer for **Indonesia's largest edutech company** with 1.3M+ Monthly visits that trains the next generation of developers, breaking down complex backend concepts into actionable, industry-ready learning paths.
 
 Off the clock, when I'm not deploying code or on stage, I am a dedicated reader and a lifelong student of the industry, constantly exploring new tech trends to share with the community.
 
