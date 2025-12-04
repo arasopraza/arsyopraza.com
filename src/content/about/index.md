@@ -1,7 +1,7 @@
 ---
-title: "I’m Arsy Opraza Akma, a software engineer and writer."
+title: "Arsy Opraza Akma"
 meta_title: "About"
-image: "/images/author.webp"
+image: "/images/profile.webp"
 draft: false
 
 what_i_do:
@@ -75,6 +75,28 @@ talks:
     images: "/images/devfest2024.webp"
 ---
 
-I'm a passionate software engineer who builds bridges between complex problems and elegant solutions. By day, I'm wrangling code and writing course material that helps students learn coding, especially Back-End. By night, you'll find me on Twitter/X or exploring the latest tech trends.
+I am a Software Engineer specializing in Backend and Cloud technologies. With a passion for both building systems and building communities, I operate at the intersection of technical execution and developer education.
 
-I'm long life learner, i love to learn about software engineering, and self development. Also, i love to read book with various topic.
+#### What I do
+
+* **Engineering**
+    I build high-performance backend architectures and cloud infrastructure. I thrive on solving difficult technical problems and optimizing systems for scale.
+
+* **Speaking**
+    From intimate local meetups to major tech conferences, I share insights on cloud architecture, backend development, and software best practices. I believe in open knowledge sharing to help the community stay ahead of the curve.
+
+* **Education**
+    I author technical course material that trains the next generation of developers, breaking down complex backend concepts into actionable, industry-ready learning paths.
+
+Off the clock, when I'm not deploying code or on stage, I am a dedicated reader and a lifelong student of the industry, constantly exploring new tech trends to share with the community.
+
+### Contact
+I am also on other platforms:
+
+* [GitHub](https://github.com/arasopraza)
+* [LinkedIn](https://linkedin.com/in/arasopraza)
+* [Twitter](https://twitter.com/arsyopraza)
+* [YouTube](https://youtube.com/arasopraza)
+* [TikTok](https://tiktok.com/@arasopraza)
+
+Feel free to reach out to me on any of these platforms. I love to connect with new people and learn new things.
