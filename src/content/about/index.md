@@ -67,6 +67,18 @@ talks:
   - title: "Google Developer Group DevFest Semarang 2024"
     description: "DevFest is the largest Google Developer Group (GDG) event series, where the community learns about the latest technologies and products from Google."
     images: "/images/devfest2024.webp"
+  - title: "AWS Community Day Malaysia 2025"
+    description: "AWS Community Day is a global, community-driven event series that brings together AWS enthusiasts, developers, architects, and cloud professionals for a day of learning, networking, and collaboration. Organized by AWS user groups, these events serve as a platform to share knowledge, experiences, and best practices related to Amazon Web Services (AWS)."
+    images: "/images/acd-my-2025.jpg"
+  - title: "AWS Community Day Indonesia 2025"
+    description: "At AWS Community Day Indonesia 2025, delve into the latest trends, innovations, and best practices in cloud computing with Amazon Web Services."
+    images: "/images/acd-id-2025.jpg"
+  - title: "Badan Efraf Developer Day 2025"
+    description: "Badan Ekraf Developer Day 2025 (BDD 2025) is an annual event held by the Ministry of Creative Economy/Creative Economy Agency of the Republic of Indonesia to hone the technical skills of Developers in Indonesia by transferring knowledge from reliable industry practitioners."
+    images: "/images/profile.webp"
+  - title: "DevFest Jakarta 2025"
+    description: "The world's largest community-driven tech conference, where passionate developers come to connect, learn, and get inspired."
+    images: "/images/devfest-jakarta-2025.jpg"
 ---
 
 I am a Software Engineer specializing in Backend and Cloud technologies. With a passion for both building systems and building communities, I operate at the intersection of technical execution and developer education.
