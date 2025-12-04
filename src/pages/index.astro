@@ -6,11 +6,19 @@ import { getEntryBySlug } from "astro:content";
 
 const entry = await getEntryBySlug("about", "index");
 const { Content } = await entry.render();
-const { title, description, image, talks, projects, experiences, certifications } = entry.data;
+const {
+  title,
+  description,
+  image,
+  talks,
+  projects,
+  experiences,
+  certifications,
+} = entry.data;
 ---
 
 <Base
-  title=Home
+  title="Home"
   meta_title="Arsy Opraza - Software Engineer"
   description={description}
   image={image}
@@ -28,6 +36,8 @@ const { title, description, image, talks, projects, experiences, certifications 
                   height={395}
                   alt={title}
                   class="rounded-lg w-full"
+                  loading="eager"
+                  fetchpriority="high"
                 />
               </div>
             )
@@ -49,11 +59,18 @@ const { title, description, image, talks, projects, experiences, certifications 
       <h3 class="page-heading mb-20">{experiences.title}</h3>
       <div class="experience-list">
         {
-          experiences.items.map((experience) => (
+          experiences.items.map((experience: any) => (
             <div class="experience-item flex items-start mb-8">
               <div class="experience-icon flex-shrink-0 mr-4">
                 <div class="icon-wrapper w-10 h-10 flex items-center justify-center">
-                  <img src={experience.icon} alt="Experience Icon" class="w-10 h-10" />
+                  <img
+                    src={experience.icon}
+                    alt="Experience Icon"
+                    class="w-10 h-10"
+                    loading="lazy"
+                    width="40"
+                    height="40"
+                  />
                 </div>
               </div>
               <div class="experience-content">
@@ -68,68 +85,79 @@ const { title, description, image, talks, projects, experiences, certifications 
     </div>
 
     <div class="container">
-    <h3 class="page-heading mb-20">{certifications.title}</h3>
-    <div class="certification-list flex items-center space-x-4">
-      {
-        certifications.items.map((certification) => (
-          <div class="experience-item flex-shrink-0">
-            <div class="experience-icon">
-              <div class="icon-wrapper w-100 h-100 flex items-center justify-center">
-                <img src={certification.icon} alt="Experience Icon" class="w-40 h-40" />
+      <h3 class="page-heading mb-20">{certifications.title}</h3>
+      <div class="certification-list flex items-center space-x-4">
+        {
+          certifications.items.map((certification: any) => (
+            <div class="experience-item flex-shrink-0">
+              <div class="experience-icon">
+                <div class="icon-wrapper w-100 h-100 flex items-center justify-center">
+                  <img
+                    src={certification.icon}
+                    alt="Experience Icon"
+                    class="w-40 h-40"
+                    loading="lazy"
+                    width="160"
+                    height="160"
+                  />
+                </div>
               </div>
+              <h6>{certification.title}</h6>
             </div>
-            <h6>{certification.title}</h6>
-          </div>
-        ))
-      }
+          ))
+        }
+      </div>
     </div>
-  </div>
   </section>
 
-<section class="section pt-0">
-  <div class="container">
-    <h3 class="page-heading mb-20">{projects.title}</h3>
-    <div class="row justify-center gy-4 text-center">
-      {
-        projects.items.map((item) => (
-          <div class="lg:col-6 md:col-6">
-            <i class="{{item.icon}} fa-3x text-primary mb-4" />
-            <h4 class="mb-3">
-              <a href={item.link}><u>{item.title}</a>
-            </h4>
-            <p>{item.description}</p>
-          </div>
-        ))
-      }
+  <section class="section pt-0">
+    <div class="container">
+      <h3 class="page-heading mb-20">{projects.title}</h3>
+      <div class="row justify-center gy-4 text-center">
+        {
+          projects.items.map((item: any) => (
+            <div class="lg:col-6 md:col-6">
+              <i class="{{item.icon}} fa-3x text-primary mb-4" />
+              <h4 class="mb-3">
+                <a href={item.link}>
+                  <u>{item.title}</u>
+                </a>
+              </h4>
+              <p>{item.description}</p>
+            </div>
+          ))
+        }
+      </div>
     </div>
-  </div>
-</section>
+  </section>
   <section class="section pt-0">
     <div class="container">
       <h3 class="page-heading mb-20">{talks.title}</h3>
       <div class="row justify-center gy-4">
-        {talks.items.map((item) => (
-          <div class="lg:col-6 md:col-6" key={item.title}>
-            <div class="bg-white shadow-lg rounded-lg p-6 h-full">
-              {item.images && (
-                <div class="img-cover mb-4">
-                  <Image
-                    src={item.images}
-                    width={295}
-                    height={295}
-                    alt={item.title}
-                    loading="lazy"
-                    class="rounded-lg w-full"
-                  />
+        {
+          talks.items.map((item: any) => (
+            <div class="lg:col-6 md:col-6">
+              <div class="bg-white shadow-lg rounded-lg p-6 h-full">
+                {item.images && (
+                  <div class="img-cover mb-4">
+                    <Image
+                      src={item.images}
+                      width={295}
+                      height={295}
+                      alt={item.title}
+                      loading="lazy"
+                      class="rounded-lg w-full"
+                    />
+                  </div>
+                )}
+                <div class="text-center">
+                  <p class="text-dark mb-2 font-bold">{item.title}</p>
+                  <p>{item.description}</p>
                 </div>
-              )}
-              <div class="text-center">
-                <p class="text-dark mb-2 font-bold">{item.title}</p>
-                <p>{item.description}</p>
               </div>
             </div>
-          </div>
-        ))}
+          ))
+        }
       </div>
     </div>
   </section>
