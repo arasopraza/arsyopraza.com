@@ -49,6 +49,16 @@ const { title, meta_title, description, image, noindex, canonical } =
 
     <!-- favicon -->
     <link rel="shortcut icon" href={config.site.favicon} />
+
+    <!-- preload LCP image when provided -->
+    {image && (
+      <link
+        rel="preload"
+        as="image"
+        href={image}
+        type="image/webp"
+      />
+    )}
     <!-- theme meta -->
     <meta name="theme-name" content="bookworm-light-astro" />
     <meta name="msapplication-TileColor" content="#000000" />
