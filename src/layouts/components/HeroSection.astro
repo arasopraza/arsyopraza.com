@@ -12,10 +12,10 @@ export interface Props {
 const { name, title, tagline, image } = Astro.props;
 
 const ctaLinks = [
-  { label: "Experiences", href: "/#experiences" },
-  { label: "Projects", href: "/#projects" },
-  { label: "Certifications", href: "/#certifications" },
-  { label: "Talks", href: "/#talks" },
+  { label: "About", href: "/about" },
+  { label: "Speaker Kit", href: "/speaker" },
+  { label: "Talks", href: "/talks" },
+  { label: "Blog", href: "/blog" },
 ];
 
 const socialLinks = [
@@ -48,16 +48,26 @@ const socialLinks = [
           {tagline}
         </p>
 
-        <!-- Primary CTA -->
-        <div class="mb-4 animate-fade-in-up animation-delay-300">
+        <!-- Primary CTAs -->
+        <div class="mb-4 flex flex-wrap items-center justify-center gap-3 md:justify-start animate-fade-in-up animation-delay-300">
           <a
-            href="mailto:aras.opraza@gmail.com"
+            href="mailto:talkwith@arsyopraza.com"
             class="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3 min-h-[44px] text-base font-semibold text-white shadow-lg shadow-primary/25 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
           >
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
             Get In Touch
+          </a>
+          <a
+            href="/resume-arsy-opraza.pdf"
+            download
+            class="inline-flex items-center gap-2 rounded-full border border-border bg-white px-6 py-3 min-h-[44px] text-base font-semibold text-dark shadow-sm transition-all duration-300 hover:border-primary hover:text-primary hover:shadow-md hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            Download CV
           </a>
         </div>
 

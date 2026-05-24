@@ -1,10 +1,8 @@
 {
   "main": [
     { "name": "Home", "url": "/" },
-    { "name": "Experiences", "url": "/#experiences" },
-    { "name": "Projects", "url": "/#projects" },
-    { "name": "Certifications", "url": "/#certifications" },
-    { "name": "Talks", "url": "/#talks" },
+    { "name": "Speaker", "url": "/speaker" },
+    { "name": "Talks", "url": "/talks" },
     { "name": "Blog", "url": "/blog" }
   ]
 }

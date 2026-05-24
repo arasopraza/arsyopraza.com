@@ -1,0 +1,197 @@
+---
+import Base from "@/layouts/Base.astro";
+import { getCollection } from "astro:content";
+
+const allTalks = await getCollection("talks");
+const sortedTalks = allTalks.sort((a, b) => {
+  if (!a.data.date && !b.data.date) return 0;
+  if (!a.data.date) return 1;
+  if (!b.data.date) return -1;
+  return b.data.date.getTime() - a.data.date.getTime();
+});
+
+const meta_title = "Speaker Kit | Arsy Opraza Akma";
+const description =
+  "Invite Arsy Opraza to speak at your event. Topics include cloud architecture, backend engineering, developer education, and AI/ML.";
+
+const topics = [
+  {
+    title: "Cloud Architecture & AWS",
+    description:
+      "Designing scalable, cost-effective cloud solutions. From serverless to container orchestration, covering real-world patterns and anti-patterns.",
+  },
+  {
+    title: "Backend Engineering with Go & Node.js",
+    description:
+      "Building high-performance APIs, microservices patterns, database optimization, and production-ready backend systems.",
+  },
+  {
+    title: "Developer Education & Career Growth",
+    description:
+      "How to learn effectively as a developer, building a personal brand, transitioning from junior to senior, and the art of technical writing.",
+  },
+  {
+    title: "AI/ML for Backend Engineers",
+    description:
+      "Practical AI integration in backend systems, LLM APIs, vector databases, and building AI-powered features without a PhD.",
+  },
+  {
+    title: "Open Source & Community Building",
+    description:
+      "Contributing to open source, building developer communities, and creating impact beyond your day job.",
+  },
+];
+
+const speakerBio = `Arsy Opraza Akma is a Software Engineer and Associate Lead Curriculum Developer at Dicoding, Indonesia's largest developer education platform (1.3M+ monthly visits). He specializes in Backend and Cloud technologies, with certifications from AWS, Google Cloud, and Microsoft Azure. Arsy has spoken at 9+ conferences across Southeast Asia including PyCon APAC, AWS Community Day, and Google DevFest. He is passionate about making complex technical concepts accessible to developers at all levels.`;
+
+const speakerBioShort = `Arsy Opraza Akma is a Software Engineer and tech educator specializing in Backend & Cloud. He leads curriculum development at Dicoding (1.3M+ monthly visits) and has spoken at 9+ conferences across Southeast Asia including PyCon APAC and AWS Community Day.`;
+---
+
+<Base meta_title={meta_title} description={description}>
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 -z-10">
+      <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3"></div>
+    </div>
+    <div class="container py-16 md:py-20">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="mb-4 text-4xl font-bold text-dark md:text-5xl">
+          Invite Me to Speak
+        </h1>
+        <p class="mb-8 text-lg text-text leading-relaxed">
+          I love sharing knowledge at conferences, meetups, and workshops. Whether it's a
+          keynote, technical deep-dive, or panel discussion — let's make it happen.
+        </p>
+        <a
+          href="mailto:talkwith@arsyopraza.com"
+          class="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3 text-base font-semibold text-white shadow-lg shadow-primary/25 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+          Book Me for Your Event
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Speaker Bio (copy-paste ready) -->
+  <section class="bg-theme-light/50">
+    <div class="container py-14">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="mb-6 text-2xl font-bold text-dark">Speaker Bio</h2>
+        <p class="text-sm font-medium text-primary mb-2">Full bio (copy-paste ready for your event page)</p>
+        <div class="rounded-xl border border-border bg-white p-6 mb-6">
+          <p class="text-text leading-relaxed">{speakerBio}</p>
+        </div>
+        <p class="text-sm font-medium text-primary mb-2">Short bio</p>
+        <div class="rounded-xl border border-border bg-white p-6">
+          <p class="text-text leading-relaxed">{speakerBioShort}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Topics -->
+  <section>
+    <div class="container py-14">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="mb-2 text-2xl font-bold text-dark">Talk Topics</h2>
+        <p class="mb-8 text-text">I can tailor these topics to your audience level and event format.</p>
+        <div class="grid gap-4">
+          {topics.map((topic) => (
+            <div class="rounded-xl border border-border/60 bg-white p-5 transition-all duration-300 hover:border-primary/30 hover:shadow-md">
+              <h3 class="text-lg font-bold text-dark mb-1">{topic.title}</h3>
+              <p class="text-sm text-text leading-relaxed">{topic.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Headshot / Photo -->
+  <section class="bg-theme-light/50">
+    <div class="container py-14">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="mb-2 text-2xl font-bold text-dark">Speaker Photo</h2>
+        <p class="mb-6 text-text">High-resolution photo for event promotional materials.</p>
+        <div class="flex flex-wrap gap-6">
+          <div class="text-center">
+            <div class="h-[200px] w-[200px] overflow-hidden rounded-2xl border-4 border-white shadow-lg mb-3">
+              <img
+                src="/images/profile.webp"
+                alt="Arsy Opraza Akma - Speaker Photo"
+                width="200"
+                height="200"
+                class="h-full w-full object-cover"
+              />
+            </div>
+            <a
+              href="/images/profile.webp"
+              download="arsy-opraza-speaker-photo.webp"
+              class="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+              Download Photo
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Past Speaking -->
+  <section>
+    <div class="container py-14">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="mb-2 text-2xl font-bold text-dark">Past Speaking Engagements</h2>
+        <p class="mb-6 text-text">I've spoken at {allTalks.length}+ events across Southeast Asia.</p>
+        <div class="grid gap-3">
+          {sortedTalks.map((talk) => (
+            <div class="flex items-center gap-4 rounded-xl border border-border/60 bg-white p-4">
+              <div class="flex-shrink-0 h-12 w-12 overflow-hidden rounded-lg">
+                <img
+                  src={talk.data.image}
+                  alt={talk.data.event_name}
+                  width="48"
+                  height="48"
+                  class="h-full w-full object-cover"
+                />
+              </div>
+              <div class="min-w-0">
+                <p class="font-semibold text-dark text-sm truncate">{talk.data.event_name}</p>
+                <p class="text-xs text-light">
+                  {talk.data.date
+                    ? talk.data.date.toLocaleDateString("en-US", { year: "numeric", month: "long" })
+                    : ""}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-primary/5">
+    <div class="container py-14">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="mb-4 text-2xl font-bold text-dark">Let's Make It Happen</h2>
+        <p class="mb-6 text-text leading-relaxed">
+          Whether it's a 200-person conference or a 20-person workshop, I bring the same energy
+          and preparation. Reach out and let's discuss how I can add value to your event.
+        </p>
+        <a
+          href="mailto:talkwith@arsyopraza.com"
+          class="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-3 text-base font-semibold text-white shadow-lg shadow-primary/25 transition-all duration-300 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5"
+        >
+          talkwith@arsyopraza.com
+        </a>
+      </div>
+    </div>
+  </section>
+</Base>
