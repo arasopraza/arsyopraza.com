@@ -1,0 +1,35 @@
+---
+import Base from "@/layouts/Base.astro";
+import CertificationBadge from "@/layouts/components/CertificationBadge.astro";
+import { getCollection } from "astro:content";
+
+const certifications = await getCollection("certifications");
+---
+
+<Base
+  title="Certifications"
+  meta_title="Professional Certifications | Arsy Opraza"
+  description="Professional certifications earned by Arsy Opraza in cloud computing, data science, and AI technologies."
+>
+  <section class="section">
+    <div class="container">
+      <h1 class="h2 mb-8 text-center">Certifications</h1>
+      {certifications.length > 0 ? (
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {certifications.map((cert) => (
+            <article>
+              <CertificationBadge
+                title={cert.data.title}
+                icon={cert.data.icon}
+                organization={cert.data.organization}
+                credential_url={cert.data.credential_url}
+              />
+            </article>
+          ))}
+        </div>
+      ) : (
+        <p class="text-center text-gray-500">No certifications available</p>
+      )}
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,35 @@
+---
+import Base from "@/layouts/Base.astro";
+import ProjectCard from "@/layouts/components/ProjectCard.astro";
+import { getCollection } from "astro:content";
+
+const allProjects = await getCollection("projects");
+
+const meta_title = "Software Projects by Arsy Opraza";
+const description =
+  "Browse the software projects built by Arsy Opraza, featuring web applications, APIs, and open-source contributions using modern technologies.";
+---
+
+<Base meta_title={meta_title} description={description}>
+  <section class="section">
+    <div class="container">
+      <h1 class="h2 mb-8 text-center">Projects</h1>
+      {
+        allProjects.length > 0 ? (
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {allProjects.map((project) => (
+              <ProjectCard
+                title={project.data.title}
+                description={project.data.description}
+                link={project.data.link}
+                technologies={project.data.technologies}
+              />
+            ))}
+          </div>
+        ) : (
+          <p class="text-center text-text">No projects available.</p>
+        )
+      }
+    </div>
+  </section>
+</Base>

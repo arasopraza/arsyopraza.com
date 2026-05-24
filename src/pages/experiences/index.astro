@@ -1,0 +1,39 @@
+---
+import Base from "@/layouts/Base.astro";
+import ExperienceCard from "@/layouts/components/ExperienceCard.astro";
+import { getCollection } from "astro:content";
+
+const allExperiences = await getCollection("experiences");
+const sortedExperiences = allExperiences.sort(
+  (a, b) => a.data.order - b.data.order,
+);
+
+const meta_title = "Professional Experiences | Arsy Opraza";
+const description =
+  "Explore the professional experiences and career journey of Arsy Opraza, including roles in software engineering and curriculum development.";
+---
+
+<Base meta_title={meta_title} description={description}>
+  <section class="section">
+    <div class="container">
+      <h1 class="h2 mb-8 text-center">Experiences</h1>
+      {
+        sortedExperiences.length > 0 ? (
+          <div class="flex flex-col gap-4">
+            {sortedExperiences.map((experience) => (
+              <ExperienceCard
+                icon={experience.data.icon}
+                title={experience.data.title}
+                company={experience.data.company}
+                duration={experience.data.duration}
+                description={experience.data.description}
+              />
+            ))}
+          </div>
+        ) : (
+          <p class="text-center text-text">No experiences available.</p>
+        )
+      }
+    </div>
+  </section>
+</Base>

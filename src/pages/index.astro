@@ -1,164 +1,158 @@
 ---
-import { Image } from "astro:assets";
 import Base from "@/layouts/Base.astro";
-import { markdownify } from "@/lib/utils/textConverter";
-import { getEntryBySlug } from "astro:content";
+import HeroSection from "@/layouts/components/HeroSection.astro";
+import SectionPreview from "@/layouts/components/SectionPreview.astro";
+import ExperienceCard from "@/layouts/components/ExperienceCard.astro";
+import ProjectCard from "@/layouts/components/ProjectCard.astro";
+import CertificationBadge from "@/layouts/components/CertificationBadge.astro";
+import TalkCard from "@/layouts/components/TalkCard.astro";
+import { getCollection } from "astro:content";
 
-const entry = await getEntryBySlug("about", "index");
-const { Content } = await entry.render();
-const {
-  title,
-  description,
-  image,
-  talks,
-  projects,
-  experiences,
-  certifications,
-} = entry.data;
+// Hero section data
+const heroData = {
+  name: "Arsy Opraza Akma",
+  title: "Engineer | Public Speaker | Mentor",
+  tagline:
+    "I am a Software Engineer specializing in Backend and Cloud technologies. With a passion for both building systems and building communities, I operate at the intersection of technical execution and developer education.",
+  image: "/images/profile.webp",
+};
+
+// Fetch experiences sorted by order ascending, display first 3
+const allExperiences = await getCollection("experiences");
+const sortedExperiences = allExperiences.sort(
+  (a, b) => a.data.order - b.data.order,
+);
+const displayedExperiences = sortedExperiences.slice(0, 3);
+
+// Fetch projects filtered by featured: true, display up to 4
+const allProjects = await getCollection("projects");
+const featuredProjects = allProjects
+  .filter((p) => p.data.featured)
+  .slice(0, 4);
+
+// Fetch all certifications
+const allCertifications = await getCollection("certifications");
+
+// Fetch talks sorted by date descending (undated last), display first 4
+const allTalks = await getCollection("talks");
+const sortedTalks = allTalks.sort((a, b) => {
+  if (!a.data.date && !b.data.date) return 0;
+  if (!a.data.date) return 1;
+  if (!b.data.date) return -1;
+  return b.data.date.getTime() - a.data.date.getTime();
+});
+const displayedTalks = sortedTalks.slice(0, 4);
 ---
 
 <Base
   title="Home"
-  meta_title="Arsy Opraza - Software Engineer"
-  description={description}
-  image={image}
+  meta_title="Arsy Opraza - Personal Website"
+  description="Portfolio of Arsy Opraza Akma — Software Engineer specializing in Backend and Cloud technologies, speaker, and educator."
+  image="/images/profile.webp"
 >
-  <section class="section">
-    <div class="container">
-      <div class="row md:gx-4">
-        <div class="sm:col-5 md:col-4">
-          {
-            image && (
-              <div class="img-cover mb-8">
-                <Image
-                  src={image}
-                  width={295}
-                  height={395}
-                  alt={title}
-                  class="rounded-lg w-full"
-                  loading="eager"
-                  fetchpriority="high"
+  <HeroSection
+    name={heroData.name}
+    title={heroData.title}
+    tagline={heroData.tagline}
+    image={heroData.image}
+  />
+
+  {displayedExperiences.length > 0 && (
+    <section class="relative bg-theme-light/50">
+      <div class="container">
+        <SectionPreview
+          title="Experiences"
+          viewAllUrl="/experiences"
+          showViewAll={allExperiences.length > 3}
+        >
+          <!-- Timeline line for desktop -->
+          <div class="relative md:pl-6 md:border-l-2 md:border-primary/20">
+            <div class="grid gap-5">
+              {displayedExperiences.map((exp) => (
+                <ExperienceCard
+                  icon={exp.data.icon}
+                  title={exp.data.title}
+                  company={exp.data.company}
+                  duration={exp.data.duration}
+                  description={exp.data.description}
                 />
-              </div>
-            )
-          }
-        </div>
-        <div class="sm:col-7 md:col-8">
-          <h1 set:html={markdownify(title)} class="h3 mb-8" />
-
-          <div class="content">
-            <Content />
+              ))}
+            </div>
           </div>
-        </div>
+        </SectionPreview>
       </div>
-    </div>
-  </section>
+    </section>
+  )}
 
-  <section class="section pt-0">
-    <div class="container">
-      <h3 class="page-heading mb-20">{experiences.title}</h3>
-      <div class="experience-list">
-        {
-          experiences.items.map((experience: any) => (
-            <div class="experience-item flex items-start mb-8">
-              <div class="experience-icon flex-shrink-0 mr-4">
-                <div class="icon-wrapper w-10 h-10 flex items-center justify-center">
-                  <img
-                    src={experience.icon}
-                    alt="Experience Icon"
-                    class="w-10 h-10"
-                    loading="lazy"
-                    width="40"
-                    height="40"
-                  />
-                </div>
-              </div>
-              <div class="experience-content">
-                <h4 class="text-lg font-semibold">{experience.title}</h4>
-                <p class="text-sm text-gray-600">{experience.company}</p>
-                <p class="text-sm text-gray-600">{experience.duration}</p>
-              </div>
-            </div>
-          ))
-        }
+  {featuredProjects.length > 0 && (
+    <section class="relative">
+      <div class="container">
+        <SectionPreview
+          title="Projects"
+          viewAllUrl="/projects"
+          showViewAll={allProjects.filter((p) => p.data.featured).length > 4}
+        >
+          <div class="grid gap-6 sm:grid-cols-2">
+            {featuredProjects.map((project) => (
+              <ProjectCard
+                title={project.data.title}
+                description={project.data.description}
+                link={project.data.link}
+                technologies={project.data.technologies}
+              />
+            ))}
+          </div>
+        </SectionPreview>
       </div>
-    </div>
+    </section>
+  )}
 
-    <div class="container">
-      <h3 class="page-heading mb-20">{certifications.title}</h3>
-      <div class="certification-list flex items-center space-x-4">
-        {
-          certifications.items.map((certification: any) => (
-            <div class="experience-item flex-shrink-0">
-              <div class="experience-icon">
-                <div class="icon-wrapper w-100 h-100 flex items-center justify-center">
-                  <img
-                    src={certification.icon}
-                    alt="Experience Icon"
-                    class="w-40 h-40"
-                    loading="lazy"
-                    width="160"
-                    height="160"
-                  />
-                </div>
-              </div>
-              <h6>{certification.title}</h6>
-            </div>
-          ))
-        }
+  {allCertifications.length > 0 && (
+    <section class="relative bg-theme-light/50">
+      <div class="container">
+        <SectionPreview
+          title="Certifications"
+          viewAllUrl="/certifications"
+          showViewAll={false}
+        >
+          <div class="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
+            {allCertifications.map((cert) => (
+              <CertificationBadge
+                title={cert.data.title}
+                icon={cert.data.icon}
+                organization={cert.data.organization}
+                credential_url={cert.data.credential_url}
+              />
+            ))}
+          </div>
+        </SectionPreview>
       </div>
-    </div>
-  </section>
+    </section>
+  )}
 
-  <section class="section pt-0">
-    <div class="container">
-      <h3 class="page-heading mb-20">{projects.title}</h3>
-      <div class="row justify-center gy-4 text-center">
-        {
-          projects.items.map((item: any) => (
-            <div class="lg:col-6 md:col-6">
-              <i class="{{item.icon}} fa-3x text-primary mb-4" />
-              <h4 class="mb-3">
-                <a href={item.link}>
-                  <u>{item.title}</u>
-                </a>
-              </h4>
-              <p>{item.description}</p>
-            </div>
-          ))
-        }
+  {displayedTalks.length > 0 && (
+    <section class="relative">
+      <div class="container">
+        <SectionPreview
+          title="Talks"
+          viewAllUrl="/talks"
+          showViewAll={allTalks.length > 4}
+        >
+          <div class="grid gap-6 sm:grid-cols-2">
+            {displayedTalks.map((talk) => (
+              <TalkCard
+                title={talk.data.title}
+                event_name={talk.data.event_name}
+                description={talk.data.description}
+                image={talk.data.image}
+                date={talk.data.date}
+                slides_url={talk.data.slides_url}
+                video_url={talk.data.video_url}
+              />
+            ))}
+          </div>
+        </SectionPreview>
       </div>
-    </div>
-  </section>
-  <section class="section pt-0">
-    <div class="container">
-      <h3 class="page-heading mb-20">{talks.title}</h3>
-      <div class="row justify-center gy-4">
-        {
-          talks.items.map((item: any) => (
-            <div class="lg:col-6 md:col-6">
-              <div class="bg-white shadow-lg rounded-lg p-6 h-full">
-                {item.images && (
-                  <div class="img-cover mb-4">
-                    <Image
-                      src={item.images}
-                      width={295}
-                      height={295}
-                      alt={item.title}
-                      loading="lazy"
-                      class="rounded-lg w-full"
-                    />
-                  </div>
-                )}
-                <div class="text-center">
-                  <p class="text-dark mb-2 font-bold">{item.title}</p>
-                  <p>{item.description}</p>
-                </div>
-              </div>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-  </section>
+    </section>
+  )}
 </Base>

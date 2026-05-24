@@ -2,6 +2,7 @@
 title: "Memahami Algoritma Pencarian Binary Search"
 description: "Membahas topik algoritma, yaitu binary search. Binary search adalah salah satu algoritma pencarian yang efisien dan cepat untuk mencari item dalam daftar yang terurut."
 date: 2023-09-06T00:00:00Z
+pubDate: 2024-03-31T00:00:00Z
 image: "/images/posts/binary_search1.webp"
 categories: ["Tech"]
 authors: ["Arsy Opraza"]

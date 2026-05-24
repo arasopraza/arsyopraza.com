@@ -18,17 +18,12 @@
 
   "metadata": {
     "meta_author": "arsy opraza",
-    "meta_image": "/images/og-image.png",
+    "meta_image": "/images/profile.webp",
     "meta_description": "Arsy Opraza Akma"
   },
 
   "params": {
     "contact_form_action": "#",
-    "copyright": "© 2024 Arsy Opraza. Powered by [Astro](https://astro.build/). Template by [Themefisher](https://themefisher.com)"
-  },
-
-  "contactinfo": {
-    "address": "Bandung City, Indonesia",
-    "email": "aras.opraza@gmail.com"
+    "copyright": "© 2026 Arsy Opraza."
   }
 }

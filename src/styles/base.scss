@@ -1,9 +1,19 @@
 html {
   @apply text-base;
+  scroll-behavior: smooth;
 }
 
 body {
-  @apply bg-body font-primary font-normal leading-relaxed text-text;
+  @apply bg-body font-primary font-normal leading-relaxed text-text overflow-x-hidden;
+}
+
+// Global focus indicator for all interactive elements (minimum 2px outline)
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  @apply outline-2 outline-offset-2 outline-primary;
 }
 
 h1,

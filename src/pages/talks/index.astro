@@ -1,0 +1,46 @@
+---
+import Base from "@/layouts/Base.astro";
+import TalkCard from "@/layouts/components/TalkCard.astro";
+import { getCollection } from "astro:content";
+
+const allTalks = await getCollection("talks");
+const sortedTalks = allTalks.sort((a, b) => {
+  if (!a.data.date && !b.data.date) return 0;
+  if (!a.data.date) return 1;
+  if (!b.data.date) return -1;
+  return b.data.date.getTime() - a.data.date.getTime();
+});
+
+const meta_title = "Tech Talks & Speaking Engagements | Arsy Opraza";
+const description =
+  "Discover speaking engagements and tech talks by Arsy Opraza at conferences and community events across the globe.";
+---
+
+<Base meta_title={meta_title} description={description}>
+  <section class="section">
+    <div class="container">
+      <h1 class="h2 mb-8 text-center">Talks</h1>
+      {
+        sortedTalks.length > 0 ? (
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {sortedTalks.map((talk) => (
+              <TalkCard
+                title={talk.data.title}
+                event_name={talk.data.event_name}
+                description={talk.data.description}
+                image={talk.data.image}
+                date={talk.data.date}
+                slides_url={talk.data.slides_url}
+                video_url={talk.data.video_url}
+              />
+            ))}
+          </div>
+        ) : (
+          <p class="text-center text-text">
+            No speaking engagements available.
+          </p>
+        )
+      }
+    </div>
+  </section>
+</Base>

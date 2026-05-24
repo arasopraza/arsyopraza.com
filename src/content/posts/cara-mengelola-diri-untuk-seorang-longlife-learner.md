@@ -2,6 +2,7 @@
 title: "Cara mengelola diri untuk seorang longlife learner"
 description: "Sebagai knowledge worker (pekerja yang menggunakan pengetahuan atau keahlian) belajar di sepanjang hayat dan up to date perlu dan wajib dilakukan."
 date: 2024-03-31T00:00:00Z
+pubDate: 2024-03-31T00:00:00Z
 image: "/images/posts/plant.webp"
 categories: ["Self Development"]
 authors: ["Arsy Opraza"]

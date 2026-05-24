@@ -9,10 +9,30 @@ export interface NavigationLink {
 }
 
 const { main }: { main: NavigationLink[] } = menu;
+const currentPath = Astro.url.pathname;
+
+/**
+ * Determines if a navigation link should be marked as active.
+ * - For anchor links (e.g., /#experiences), mark active when on the homepage.
+ * - For regular page links, match the current path.
+ */
+function isActive(url: string): boolean {
+  // Normalize paths by removing trailing slashes for comparison
+  const normalizedCurrent = currentPath.replace(/\/$/, "") || "/";
+
+  if (url.startsWith("/#")) {
+    // Anchor links are active when on the homepage
+    return normalizedCurrent === "" || normalizedCurrent === "/";
+  }
+
+  // Regular page links: exact match (normalized)
+  const normalizedUrl = url.replace(/\/$/, "") || "/";
+  return normalizedCurrent === normalizedUrl;
+}
 ---
 
 <header class="header pt-6">
-  <nav class="navbar container">
+  <nav class="navbar container" role="navigation" aria-label="Main navigation">
     <!-- logo -->
     <div class="order-0">
       <Logo />
@@ -22,7 +42,9 @@ const { main }: { main: NavigationLink[] } = menu;
     <label
       id="show-button"
       for="nav-toggle"
-      class="order-2 flex cursor-pointer items-center text-black md:order-1 md:hidden"
+      class="order-2 flex cursor-pointer items-center min-h-[44px] min-w-[44px] justify-center text-black focus-within:ring-2 focus-within:ring-primary md:order-1 md:hidden"
+      aria-expanded="false"
+      aria-label="Toggle navigation menu"
     >
       <svg class="h-6 fill-current" viewBox="0 0 20 20">
         <title>Menu Open</title>
@@ -32,7 +54,9 @@ const { main }: { main: NavigationLink[] } = menu;
     <label
       id="hide-button"
       for="nav-toggle"
-      class="order-2 hidden cursor-pointer items-center text-black md:order-1"
+      class="order-2 hidden cursor-pointer items-center min-h-[44px] min-w-[44px] justify-center text-black focus-within:ring-2 focus-within:ring-primary md:order-1"
+      aria-expanded="true"
+      aria-label="Toggle navigation menu"
     >
       <svg class="h-6 fill-current" viewBox="0 0 20 20">
         <title>Menu Close</title>
@@ -49,22 +73,27 @@ const { main }: { main: NavigationLink[] } = menu;
     >
       {
         main.map((menu) => (
-          <>
-            <li class="nav-item">
-              <a href={menu.url} class="nav-link block">
+          <li class="nav-item">
+            <a
+              href={menu.url}
+              class:list={[
+                "nav-link block focus:outline-none focus:ring-2 focus:ring-primary rounded",
+                { "text-primary font-bold border-b-2 border-primary": isActive(menu.url) },
+              ]}
+              aria-current={isActive(menu.url) ? "page" : undefined}
+            >
               {menu.name}
-              </a>
-            </li>
-          </>
+            </a>
+          </li>
         ))
       }
     </ul>
     <div class="order-1 ml-auto flex md:order-2 md:ml-0">
       <a
-        class="mr-4 inline-block cursor-pointer p-2 text-xl text-dark transition hover:text-primary md:mr-0"
+        class="mr-4 inline-flex items-center justify-center cursor-pointer min-h-[44px] min-w-[44px] text-xl text-dark transition hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary rounded md:mr-0"
         href="/search"
-        title="seach"
-        aria-label="seach"
+        title="Search"
+        aria-label="Search"
       >
         <IoSearch />
       </a>

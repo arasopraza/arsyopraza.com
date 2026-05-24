@@ -1,0 +1,59 @@
+---
+interface Props {
+  title: string;
+  icon: string;
+  organization?: string;
+  credential_url?: string;
+}
+
+const { title, icon, organization, credential_url } = Astro.props;
+const altText = `${title} certification badge`;
+---
+
+<div class="group flex flex-col items-center text-center">
+  <div class="relative mb-3 rounded-2xl bg-white border border-border/60 p-4 shadow-sm transition-all duration-300 group-hover:shadow-lg group-hover:shadow-primary/5 group-hover:-translate-y-1 group-hover:border-primary/30">
+    {credential_url ? (
+      <a
+        href={credential_url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block min-h-[44px] min-w-[44px] focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+        aria-label={`View ${title} credential`}
+      >
+        <img
+          src={icon}
+          alt={altText}
+          width="100"
+          height="100"
+          class="h-[100px] w-[100px] object-contain transition-transform duration-300 group-hover:scale-110"
+          onerror={`this.style.display='none';this.nextElementSibling.style.display='flex';`}
+        />
+        <span
+          class="hidden h-[100px] w-[100px] items-center justify-center rounded border border-gray-200 bg-gray-50 px-2 text-sm font-medium text-gray-700"
+        >
+          {title}
+        </span>
+      </a>
+    ) : (
+      <div class="inline-block">
+        <img
+          src={icon}
+          alt={altText}
+          width="100"
+          height="100"
+          class="h-[100px] w-[100px] object-contain transition-transform duration-300 group-hover:scale-110"
+          onerror={`this.style.display='none';this.nextElementSibling.style.display='flex';`}
+        />
+        <span
+          class="hidden h-[100px] w-[100px] items-center justify-center rounded border border-gray-200 bg-gray-50 px-2 text-sm font-medium text-gray-700"
+        >
+          {title}
+        </span>
+      </div>
+    )}
+  </div>
+  <p class="text-sm font-semibold text-dark leading-tight">{title}</p>
+  {organization && (
+    <p class="mt-0.5 text-xs text-light">{organization}</p>
+  )}
+</div>

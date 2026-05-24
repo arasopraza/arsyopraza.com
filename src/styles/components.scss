@@ -5,7 +5,7 @@
 
 // container
 .container {
-  @apply max-w-[1000px] px-4 md:px-8;
+  @apply max-w-[1000px] px-4 md:px-8 overflow-hidden;
 }
 
 // page heading
@@ -46,7 +46,7 @@
   li {
     @apply inline-block;
     a {
-      @apply block h-11 w-11 rounded-lg border border-light bg-transparent text-center text-white transition hover:border-primary hover:bg-primary;
+      @apply block h-11 w-11 rounded-lg border border-light bg-transparent text-center text-white transition hover:border-primary hover:bg-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
       svg {
         @apply m-auto h-11 text-base;
       }
@@ -59,7 +59,7 @@
   li {
     @apply inline-block;
     a {
-      @apply block p-3 text-dark transition hover:text-primary;
+      @apply block p-3 text-dark transition hover:text-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded;
       svg {
         @apply text-lg;
       }
