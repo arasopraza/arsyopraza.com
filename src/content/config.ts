@@ -36,7 +36,7 @@ const experiencesCollection = defineCollection({
     company: z.string().max(100),
     duration: z.string().max(50),
     icon: z.string(),
-    description: z.string().max(500).optional(),
+    description: z.string().max(1000).optional(),
     order: z.number().int().min(1),
   }),
 });
