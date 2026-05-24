@@ -84,6 +84,32 @@ const displayedTalks = sortedTalks.slice(0, 4);
     </section>
   )}
 
+  {displayedTalks.length > 0 && (
+    <section class="relative">
+      <div class="container">
+        <SectionPreview
+          title="Talks"
+          viewAllUrl="/talks"
+          showViewAll={allTalks.length > 4}
+        >
+          <div class="grid gap-6 sm:grid-cols-2">
+            {displayedTalks.map((talk) => (
+              <TalkCard
+                title={talk.data.title}
+                event_name={talk.data.event_name}
+                description={talk.data.description}
+                image={talk.data.image}
+                date={talk.data.date}
+                slides_url={talk.data.slides_url}
+                video_url={talk.data.video_url}
+              />
+            ))}
+          </div>
+        </SectionPreview>
+      </div>
+    </section>
+  )}
+
   {featuredProjects.length > 0 && (
     <section class="relative">
       <div class="container">
@@ -122,32 +148,6 @@ const displayedTalks = sortedTalks.slice(0, 4);
                 icon={cert.data.icon}
                 organization={cert.data.organization}
                 credential_url={cert.data.credential_url}
-              />
-            ))}
-          </div>
-        </SectionPreview>
-      </div>
-    </section>
-  )}
-
-  {displayedTalks.length > 0 && (
-    <section class="relative">
-      <div class="container">
-        <SectionPreview
-          title="Talks"
-          viewAllUrl="/talks"
-          showViewAll={allTalks.length > 4}
-        >
-          <div class="grid gap-6 sm:grid-cols-2">
-            {displayedTalks.map((talk) => (
-              <TalkCard
-                title={talk.data.title}
-                event_name={talk.data.event_name}
-                description={talk.data.description}
-                image={talk.data.image}
-                date={talk.data.date}
-                slides_url={talk.data.slides_url}
-                video_url={talk.data.video_url}
               />
             ))}
           </div>
